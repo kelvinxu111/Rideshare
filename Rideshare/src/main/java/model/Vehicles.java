@@ -1,14 +1,19 @@
 package model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name="vehicles")
 public class Vehicles {
     @Id
     //Not sure how to generate this
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long VehicleID;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "varchar(255)")
+    private UUID VehicleID;
     private String Model;
     private String Brand;
     private String LicensePlate;
