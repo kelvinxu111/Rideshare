@@ -12,7 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
 public class RideshareApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(RideshareApplication.class, args);
+
 	}
 
 }

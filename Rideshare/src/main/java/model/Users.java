@@ -1,149 +1,64 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-
+import java.util.List;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
-
+@Getter
+@Setter
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class Users {
     @Id
     //Not sure how to generate this
     @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name="uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "varchar(255)")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "userId", columnDefinition = "varchar(255)")
     private UUID UserID;
+    @Column(name = "userName")
     private String Username;
+    @Column(name = "displayName")
     private String DisplayName;
+    @Column(name = "phoneNumber")
     private String PhoneNumber;
+    @Column(name = "email")
     private String Email;
+    @Column(name = "password")
     private String Password;
+    @Column(name = "role")
     private String Role;
+    @Column(name = "licenseNumber")
     private String LicenseNumber;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name ="VehicleID",referencedColumnName = "VehicleID")
-    private Vehicles VehicleInfoID;
+    @OneToMany(mappedBy = "user")
+    private List<Vehicles> vehicles;
+    @Column(name = "created")
     private LocalDateTime Created;
+    @Column(name = "updated")
     private LocalDateTime Updated;
+    @Column(name = "deleted")
     private LocalDateTime Deleted;
+    @Column(name = "isActivated")
     private boolean IsActivated;
     @Lob
+    @Column(name = "profilePicture")
     private byte[] ProfilePicture;
-    public Users(String username, String displayName, String phoneNumber, String email, String password,String role, String licenseNumber){
-        this.Username=username;
-        this.DisplayName=displayName;
-        this.PhoneNumber=phoneNumber;
-        this.Email=email;
-        this.Password=password;
-        this.Role=role;
-        this.LicenseNumber=licenseNumber;
-        this.Created=LocalDateTime.now();
-        this.IsActivated=false;
+    public Users(){
+
+    }
+    public Users(String username, String displayName, String phoneNumber, String email, String password, String role, String licenseNumber) {
+        this.Username = username;
+        this.DisplayName = displayName;
+        this.PhoneNumber = phoneNumber;
+        this.Email = email;
+        this.Password = password;
+        this.Role = role;
+        this.LicenseNumber = licenseNumber;
+        this.Created = LocalDateTime.now();
+        this.IsActivated = false;
     }
 
-//    public void setActivated(boolean activated) {
-//        IsActivated = activated;
-//    }
-//
-//    public void setCreated(LocalDateTime created) {
-//        Created = created;
-//    }
-//
-//    public void setDeleted(LocalDateTime deleted) {
-//        Deleted = deleted;
-//    }
-//
-//    public void setLicenseNumber(String licenseNumber) {
-//        LicenseNumber = licenseNumber;
-//    }
-//
-//    public void setDisplayName(String displayName) {
-//        DisplayName = displayName;
-//    }
-//
-//    public void setEmail(String email) {
-//        Email = email;
-//    }
-//
-//    public void setPassword(String password) {
-//        Password = password;
-//    }
-//
-//    public void setPhoneNumber(String phoneNumber) {
-//        PhoneNumber = phoneNumber;
-//    }
-//
-//    public void setProfilePicture(byte[] profilePicture) {
-//        ProfilePicture = profilePicture;
-//    }
-//
-//    public void setRole(String role) {
-//        Role = role;
-//    }
-//
-//    public void setUpdated(LocalDateTime updated) {
-//        Updated = updated;
-//    }
-//
-//    public void setUsername(String username) {
-//        Username = username;
-//    }
-//
-//    public void setVehicleInfoID(Vehicles vehicleInfoID) {
-//        VehicleInfoID = vehicleInfoID;
-//    }
-//
-//    public UUID getUserID() {
-//        return UserID;
-//    }
-//
-//    public String getDisplayName() {
-//        return DisplayName;
-//    }
-//
-//    public String getEmail() {
-//        return Email;
-//    }
-//
-//    public String getLicenseNumber() {
-//        return LicenseNumber;
-//    }
-//
-//    public String getPassword() {
-//        return Password;
-//    }
-//
-//    public String getPhoneNumber() {
-//        return PhoneNumber;
-//    }
-//
-//    public String getRole() {
-//        return Role;
-//    }
-//
-//    public String getUsername() {
-//        return Username;
-//    }
-//
-//    public Vehicles getVehicleInfoID() {
-//        return VehicleInfoID;
-//    }
-//
-//    public byte[] getProfilePicture() {
-//        return ProfilePicture;
-//    }
-//
-//    public LocalDateTime getCreated() {
-//        return Created;
-//    }
-//
-//    public LocalDateTime getDeleted() {
-//        return Deleted;
-//    }
-//
-//    public LocalDateTime getUpdated() {
-//        return Updated;
-//    }
+
 }
