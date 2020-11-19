@@ -1,15 +1,20 @@
 package model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
-@Table(name="Users")
+@Table(name="users")
 public class Users {
     @Id
     //Not sure how to generate this
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long UserID;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "varchar(255)")
+    private UUID UserID;
     private String Username;
     private String DisplayName;
     private String PhoneNumber;
@@ -18,7 +23,6 @@ public class Users {
     private String Role;
     private String LicenseNumber;
     @OneToOne(cascade = CascadeType.ALL)
-    //????
     @JoinColumn(name ="VehicleID",referencedColumnName = "VehicleID")
     private Vehicles VehicleInfoID;
     private LocalDateTime Created;
@@ -39,107 +43,107 @@ public class Users {
         this.IsActivated=false;
     }
 
-    public void setActivated(boolean activated) {
-        IsActivated = activated;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        Created = created;
-    }
-
-    public void setDeleted(LocalDateTime deleted) {
-        Deleted = deleted;
-    }
-
-    public void setLicenseNumber(String licenseNumber) {
-        LicenseNumber = licenseNumber;
-    }
-
-    public void setDisplayName(String displayName) {
-        DisplayName = displayName;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
-    }
-
-    public void setProfilePicture(byte[] profilePicture) {
-        ProfilePicture = profilePicture;
-    }
-
-    public void setRole(String role) {
-        Role = role;
-    }
-
-    public void setUpdated(LocalDateTime updated) {
-        Updated = updated;
-    }
-
-    public void setUsername(String username) {
-        Username = username;
-    }
-
-    public void setVehicleInfoID(Vehicles vehicleInfoID) {
-        VehicleInfoID = vehicleInfoID;
-    }
-
-    public long getUserID() {
-        return UserID;
-    }
-
-    public String getDisplayName() {
-        return DisplayName;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public String getLicenseNumber() {
-        return LicenseNumber;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public String getPhoneNumber() {
-        return PhoneNumber;
-    }
-
-    public String getRole() {
-        return Role;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public Vehicles getVehicleInfoID() {
-        return VehicleInfoID;
-    }
-
-    public byte[] getProfilePicture() {
-        return ProfilePicture;
-    }
-
-    public LocalDateTime getCreated() {
-        return Created;
-    }
-
-    public LocalDateTime getDeleted() {
-        return Deleted;
-    }
-
-    public LocalDateTime getUpdated() {
-        return Updated;
-    }
+//    public void setActivated(boolean activated) {
+//        IsActivated = activated;
+//    }
+//
+//    public void setCreated(LocalDateTime created) {
+//        Created = created;
+//    }
+//
+//    public void setDeleted(LocalDateTime deleted) {
+//        Deleted = deleted;
+//    }
+//
+//    public void setLicenseNumber(String licenseNumber) {
+//        LicenseNumber = licenseNumber;
+//    }
+//
+//    public void setDisplayName(String displayName) {
+//        DisplayName = displayName;
+//    }
+//
+//    public void setEmail(String email) {
+//        Email = email;
+//    }
+//
+//    public void setPassword(String password) {
+//        Password = password;
+//    }
+//
+//    public void setPhoneNumber(String phoneNumber) {
+//        PhoneNumber = phoneNumber;
+//    }
+//
+//    public void setProfilePicture(byte[] profilePicture) {
+//        ProfilePicture = profilePicture;
+//    }
+//
+//    public void setRole(String role) {
+//        Role = role;
+//    }
+//
+//    public void setUpdated(LocalDateTime updated) {
+//        Updated = updated;
+//    }
+//
+//    public void setUsername(String username) {
+//        Username = username;
+//    }
+//
+//    public void setVehicleInfoID(Vehicles vehicleInfoID) {
+//        VehicleInfoID = vehicleInfoID;
+//    }
+//
+//    public UUID getUserID() {
+//        return UserID;
+//    }
+//
+//    public String getDisplayName() {
+//        return DisplayName;
+//    }
+//
+//    public String getEmail() {
+//        return Email;
+//    }
+//
+//    public String getLicenseNumber() {
+//        return LicenseNumber;
+//    }
+//
+//    public String getPassword() {
+//        return Password;
+//    }
+//
+//    public String getPhoneNumber() {
+//        return PhoneNumber;
+//    }
+//
+//    public String getRole() {
+//        return Role;
+//    }
+//
+//    public String getUsername() {
+//        return Username;
+//    }
+//
+//    public Vehicles getVehicleInfoID() {
+//        return VehicleInfoID;
+//    }
+//
+//    public byte[] getProfilePicture() {
+//        return ProfilePicture;
+//    }
+//
+//    public LocalDateTime getCreated() {
+//        return Created;
+//    }
+//
+//    public LocalDateTime getDeleted() {
+//        return Deleted;
+//    }
+//
+//    public LocalDateTime getUpdated() {
+//        return Updated;
+//    }
 }
