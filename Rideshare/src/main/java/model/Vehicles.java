@@ -17,19 +17,19 @@ public class Vehicles {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "vehicleId", columnDefinition = "varchar(255)")
     private UUID VehicleId;
-    @Column(name = "model")
+    @Column(name = "model", nullable = false)
     private String Model;
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false)
     private String Brand;
-    @Column(name = "licensePlate")
+    @Column(name = "licensePlate", nullable = false)
     private String LicensePlate;
-    @Column(name = "vehicleType")
+    @Column(name = "vehicleType", nullable = false)
     private String VehicleType;
-    @Column(name = "color")
+    @Column(name = "color", nullable = false)
     private String Color;
     //Don't know if this is correct way of addressing this
     @ManyToOne(cascade = {CascadeType.ALL}, fetch=FetchType.LAZY)
-    @JoinColumn(name="users_id")
+    @JoinColumn(name="users_id", nullable = false)
     private Users user;
     public Vehicles(){
 

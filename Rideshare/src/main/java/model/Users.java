@@ -18,29 +18,29 @@ public class Users {
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "userId", columnDefinition = "varchar(255)")
     private UUID UserID;
-    @Column(name = "userName")
+    @Column(name = "userName", nullable = false)
     private String Username;
-    @Column(name = "displayName")
+    @Column(name = "displayName", nullable = false)
     private String DisplayName;
-    @Column(name = "phoneNumber")
+    @Column(name = "phoneNumber", nullable = false)
     private String PhoneNumber;
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String Email;
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String Password;
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private String Role;
-    @Column(name = "licenseNumber")
+    @Column(name = "licenseNumber", nullable = false)
     private String LicenseNumber;
     @OneToMany(mappedBy = "user")
     private List<Vehicles> vehicles;
-    @Column(name = "created")
+    @Column(name = "created", nullable = false)
     private LocalDateTime Created;
     @Column(name = "updated")
     private LocalDateTime Updated;
     @Column(name = "deleted")
     private LocalDateTime Deleted;
-    @Column(name = "isActivated")
+    @Column(name = "isActivated", nullable = false)
     private boolean IsActivated;
     @Lob
     @Column(name = "profilePicture")
