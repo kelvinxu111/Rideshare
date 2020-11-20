@@ -1,5 +1,5 @@
-package services;
-import model.*;
+package com.example.Rideshare.services;
+import com.example.Rideshare.model.*;
 import java.util.List;
 import java.util.UUID;
 

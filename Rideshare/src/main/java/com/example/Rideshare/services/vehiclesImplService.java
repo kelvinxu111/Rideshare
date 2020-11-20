@@ -1,12 +1,10 @@
-package services;
+package com.example.Rideshare.services;
+import com.example.Rideshare.repository.vehiclesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import model.*;
-import repository.*;
 
-
-import java.nio.charset.StandardCharsets;
+import com.example.Rideshare.model.*;
 import java.util.List;
 import java.util.UUID;
 @Service("vehiclesService")

@@ -1,8 +1,7 @@
-package repository;
+package com.example.Rideshare.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import model.Users;
-
+import com.example.Rideshare.model.Users;
 import java.util.UUID;
 
 @Repository("usersRepository")
