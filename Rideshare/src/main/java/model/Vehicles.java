@@ -1,15 +1,16 @@
 package model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.UUID;
-@Getter
-@Setter
+
 @Entity
 @Table(name = "vehicles")
+@Data
 public class Vehicles {
     @Id
     //Not sure how to generate this
