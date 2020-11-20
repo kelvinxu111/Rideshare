@@ -1,9 +1,5 @@
-# IDE configuration files
-.idea/*
-
 # Compiled class file
-**/target
-**/*.class
+
 
 # Log file
 *.log
