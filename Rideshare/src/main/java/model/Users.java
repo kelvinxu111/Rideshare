@@ -7,11 +7,10 @@ import java.util.List;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
-@Getter
-@Setter
+
 @Entity
 @Table(name = "users")
-public class Users {
+@Getter @Setter public class Users {
     @Id
     //Not sure how to generate this
     @GeneratedValue(generator = "uuid2")
@@ -60,5 +59,111 @@ public class Users {
         this.IsActivated = false;
     }
 
+    public void setUsername(String username) {
+        Username = username;
+    }
 
+    public void setUpdated(LocalDateTime updated) {
+        Updated = updated;
+    }
+
+    public void setRole(String role) {
+        Role = role;
+    }
+
+    public void setUserID(UUID userID) {
+        UserID = userID;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        ProfilePicture = profilePicture;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public void setDisplayName(String displayName) {
+        DisplayName = displayName;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        LicenseNumber = licenseNumber;
+    }
+
+    public void setDeleted(LocalDateTime deleted) {
+        Deleted = deleted;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        Created = created;
+    }
+
+    public void setActivated(boolean activated) {
+        IsActivated = activated;
+    }
+
+    public void setVehicles(List<Vehicles> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public String getRole() {
+        return Role;
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public String getLicenseNumber() {
+        return LicenseNumber;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public String getDisplayName() {
+        return DisplayName;
+    }
+
+    public UUID getUserID() {
+        return UserID;
+    }
+
+    public LocalDateTime getUpdated() {
+        return Updated;
+    }
+
+    public LocalDateTime getDeleted() {
+        return Deleted;
+    }
+
+    public LocalDateTime getCreated() {
+        return Created;
+    }
+
+    public byte[] getProfilePicture() {
+        return ProfilePicture;
+    }
+
+    public List<Vehicles> getVehicles() {
+        return vehicles;
+    }
 }

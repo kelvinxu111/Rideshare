@@ -42,55 +42,55 @@ public class Vehicles {
         this.Color = color;
     }
 
-//    public void setBrand(String brand) {
-//        Brand = brand;
-//    }
-//
-//    public void setColor(String color) {
-//        Color = color;
-//    }
-//
-//    public void setLicensePlate(String licensePlate) {
-//        LicensePlate = licensePlate;
-//    }
-//
-//    public void setModel(String model) {
-//        Model = model;
-//    }
-//
-//    public void setUser(Users user) {
-//        User = user;
-//    }
-//
-//    public void setVehicleType(String vehicleType) {
-//        VehicleType = vehicleType;
-//    }
-//
-//    public long getVehicleID() {
-//        return VehicleID;
-//    }
-//
-//    public String getBrand() {
-//        return Brand;
-//    }
-//
-//    public String getColor() {
-//        return Color;
-//    }
-//
-//    public String getLicensePlate() {
-//        return LicensePlate;
-//    }
-//
-//    public String getModel() {
-//        return Model;
-//    }
-//
-//    public String getVehicleType() {
-//        return VehicleType;
-//    }
-//
-//    public Users getUser() {
-//        return User;
-//    }
+    public void setBrand(String brand) {
+        Brand = brand;
+    }
+
+    public void setColor(String color) {
+        Color = color;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        LicensePlate = licensePlate;
+    }
+
+    public void setModel(String model) {
+        Model = model;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public void setVehicleType(String vehicleType) {
+        VehicleType = vehicleType;
+    }
+
+    public UUID getVehicleID() {
+        return getVehicleID();
+    }
+
+    public String getBrand() {
+        return Brand;
+    }
+
+    public String getColor() {
+        return Color;
+    }
+
+    public String getLicensePlate() {
+        return LicensePlate;
+    }
+
+    public String getModel() {
+        return Model;
+    }
+
+    public String getVehicleType() {
+        return VehicleType;
+    }
+
+    public Users getUser() {
+        return this.user;
+    }
 }
