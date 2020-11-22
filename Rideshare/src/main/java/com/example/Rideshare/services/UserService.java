@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public interface UserService {
     public Optional<User> findUserById(UUID id);
-    public User findUserByUsername(String username);
+    public User findUserByUserName(String username);
     public User findByUsername(String username);
     public User findByEmail(String email);
     public List<User> findAll();

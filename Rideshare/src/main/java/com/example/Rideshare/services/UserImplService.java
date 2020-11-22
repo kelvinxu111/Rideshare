@@ -23,13 +23,13 @@ public class UserImplService implements UserService {
     }
 
     @Override
-    public User findUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public User findUserByUserName(String username) {
+        return userRepository.findByUserName(username);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUserName(username);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class UserImplService implements UserService {
         return userRepository.findByEmail(email);
     }
     public User createUser(User user){
-        User checkUser = findUserByUsername(user.getUserName());
+        User checkUser = findUserByUserName(user.getUserName());
         if (checkUser!=null){
             return null;
         }

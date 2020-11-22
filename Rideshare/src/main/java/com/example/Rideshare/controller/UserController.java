@@ -27,7 +27,7 @@ public class UserController {
                 userRepository.findAll().forEach(users::add);
             } else {
                 if (queryParams.containsKey("userName")) {
-                    users.add(userRepository.findByUsername(queryParams.get("userName")));
+                    users.add(userRepository.findByUserName(queryParams.get("userName")));
                 }
             }
 
