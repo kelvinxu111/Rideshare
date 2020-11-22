@@ -1,51 +1,49 @@
-package services;
+package com.example.Rideshare.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import model.*;
-import repository.*;
+import com.example.Rideshare.model.*;
+import com.example.Rideshare.repository.*;
 
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.UUID;
 @Service("vehiclesService")
-public class vehiclesImplService implements vehiclesService{
+public class VehicleImplService implements VehicleService {
     @Autowired
-    @Qualifier("vehiclesRepository")
-    private vehiclesRepository vehicleRepository;
+    private VehicleRepository vehicleRepository;
 
     @Override
-    public Vehicles findVehicleByVehicleId(UUID id) {
-        return vehicleRepository.findByVehicleId((id));
+    public Vehicle findVehicleByVehicleId(UUID id) {
+        return vehicleRepository.findByVehicleID((id));
     }
 
     @Override
-    public List<Vehicles> findVehiclesByModel(String model) {
+    public List<Vehicle> findVehiclesByModel(String model) {
         return vehicleRepository.findByModel(model);
     }
 
     @Override
-    public List<Vehicles> findVehiclesByBrand(String brand) {
+    public List<Vehicle> findVehiclesByBrand(String brand) {
         return vehicleRepository.findByBrand(brand);
     }
 
     @Override
-    public List<Vehicles> findVehiclesByLicensePlate(String licensePlate) {
+    public List<Vehicle> findVehiclesByLicensePlate(String licensePlate) {
         return vehicleRepository.findByLicensePlate(licensePlate);
     }
 
     @Override
-    public List<Vehicles> findVehiclesByColor(String color) {
+    public List<Vehicle> findVehiclesByColor(String color) {
         return vehicleRepository.findByColor(color);
     }
 
     @Override
-    public List<Vehicles> findVehiclesByUser(Users user) {
+    public List<Vehicle> findVehiclesByUser(User user) {
         return vehicleRepository.findByUser(user);
     }
-    public Vehicles createVehicle(Vehicles vehicle,Users owner){
-        Vehicles checkVehicles = findVehicleByVehicleId(vehicle.getVehicleID());
+    public Vehicle createVehicle(Vehicle vehicle, User owner){
+        Vehicle checkVehicles = findVehicleByVehicleId(vehicle.getVehicleID());
         if (checkVehicles!=null){
             return null;
         }

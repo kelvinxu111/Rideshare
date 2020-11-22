@@ -1,8 +1,7 @@
 package com.example.Rideshare.controller;
 
-import com.example.Rideshare.model.Users;
+import com.example.Rideshare.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,36 +19,36 @@ public class UserController {
     UserRepository userRepository;
 
     @GetMapping("/users")
-    public ResponseEntity<List<Users>> getAllUsers(@RequestParam(required = false) Map<String, String> queryParams) {
+    public ResponseEntity getAllUsers(@RequestParam(required = false) Map<String, String> queryParams) {
         try {
-            List<Users> users = new ArrayList<Users>();
+            List<User> users = new ArrayList<User>();
 
             if (queryParams == null) {
                 userRepository.findAll().forEach(users::add);
             } else {
-                if (queryParams.containsKey("username")) {
-                    userRepository.findByUsername(queryParams.get("username")).forEach(users::add);
+                if (queryParams.containsKey("userName")) {
+                    users.add(userRepository.findByUsername(queryParams.get("userName")));
                 }
             }
 
-            return new ResponseEntity<List<Users>>(users, HttpStatus.OK);
+            return new ResponseEntity<List<User>>(users, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/users/{userID}")
-    public ResponseEntity<Users> getUserById(@PathVariable("userID") String userID) {
+    public ResponseEntity<User> getUserById(@PathVariable("userID") String userID) {
         return null;
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Users> createUser(@RequestBody Users user) {
+    public ResponseEntity createUser(@RequestBody User user) {
         try {
-            Users u = userRepository.save(user);
-            return new ResponseEntity<Users>(u, HttpStatus.OK);
+            User u = userRepository.save(user);
+            return new ResponseEntity<User>(u, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

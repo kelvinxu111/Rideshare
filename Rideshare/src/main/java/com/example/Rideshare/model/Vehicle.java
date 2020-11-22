@@ -11,7 +11,7 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "vehicles")
-public class Vehicles {
+public class Vehicle {
 
     @Id
     //Not sure how to generate this
@@ -20,29 +20,29 @@ public class Vehicles {
     @Column(name = "vehicleID", columnDefinition = "varchar(255)")
     private UUID vehicleID;
 
-    @Column(name = "model")
+    @Column(name = "model",nullable = false)
     private String model;
 
-    @Column(name = "brand")
+    @Column(name = "brand",nullable = false)
     private String brand;
 
-    @Column(name = "licensePlate")
+    @Column(name = "licensePlate",nullable = false)
     private String licensePlate;
 
-    @Column(name = "vehicleType")
+    @Column(name = "vehicleType",nullable = false)
     private String vehicleType;
 
-    @Column(name = "color")
+    @Column(name = "color",nullable = false)
     private String color;
 
     //Don't know if this is correct way of addressing this
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private Users user;
+    @JoinColumn(name = "user_id",nullable = false)
+    private User user;
 
-    public Vehicles() {}
+    public Vehicle() {}
 
-    public Vehicles(UUID vehicleID, String model, String brand, String licensePlate, String vehicleType, String color) {
+    public Vehicle(UUID vehicleID, String model, String brand, String licensePlate, String vehicleType, String color) {
         this.vehicleID = vehicleID;
         this.model = model;
         this.brand = brand;

@@ -13,40 +13,40 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
     //Not sure how to generate this
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "userID", columnDefinition = "varchar(255)")
+    @Column(name = "userId", columnDefinition = "varchar(255)")
     private UUID userID;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "userName",nullable = false, unique = true)
+    private String userName;
 
-    @Column(name = "displayName")
+    @Column(name = "displayName",nullable = false, unique = true)
     private String displayName;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phoneNumber",nullable = false)
     private String phoneNumber;
 
-    @Column(name = "email")
+    @Column(name = "email",nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password",nullable = false)
     private String password;
 
-    @Column(name = "role")
+    @Column(name = "role",nullable = false)
     private String role;
 
-    @Column(name = "licenseNumber")
+    @Column(name = "licenseNumber",nullable = false, unique = true)
     private String licenseNumber;
 
     @OneToMany(mappedBy = "user")
-    private List<Vehicles> vehicles;
+    private List<Vehicle> vehicles;
 
-    @Column(name = "created")
+    @Column(name = "created",nullable = false)
     private LocalDateTime created;
 
     @Column(name = "updated")
@@ -55,18 +55,18 @@ public class Users {
     @Column(name = "deleted")
     private LocalDateTime deleted;
 
-    @Column(name = "isActivated")
+    @Column(name = "isActivated",nullable = false)
     private boolean isActivated;
 
     @Lob
     @Column(name = "profilePicture")
     private byte[] profilePicture;
 
-    public Users() {}
+    public User() {}
 
-    public Users(UUID userID, String username, String displayName, String phoneNumber, String email, String password, String role, String licenseNumber) {
+    public User(UUID userID, String username, String displayName, String phoneNumber, String email, String password, String role, String licenseNumber) {
         this.userID = userID;
-        this.username = username;
+        this.userName = username;
         this.displayName = displayName;
         this.phoneNumber = phoneNumber;
         this.email = email;

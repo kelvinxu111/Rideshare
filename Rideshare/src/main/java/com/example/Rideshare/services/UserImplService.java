@@ -1,43 +1,43 @@
-package services;
+package com.example.Rideshare.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import model.*;
-import repository.*;
+import com.example.Rideshare.model.*;
+import com.example.Rideshare.repository.*;
 import com.google.common.hash.Hashing;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service("usersService")
-public class usersImplService implements usersService{
+public class UserImplService implements UserService {
     @Autowired
-    @Qualifier("usersRepository")
-    private usersRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
-    public Users findUserById(UUID id) {
+    public Optional<User> findUserById(UUID id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public Users findUserByUsername(String username) {
+    public User findUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
-    public Users findByUsername(String username) {
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
-    public Users findByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-    public Users createUser(Users user){
-        Users checkUser = findUserByUsername(user.getUsername());
+    public User createUser(User user){
+        User checkUser = findUserByUsername(user.getUserName());
         if (checkUser!=null){
             return null;
         }
@@ -51,7 +51,7 @@ public class usersImplService implements usersService{
     }
 
     @Override
-    public List<Users> findAll() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 }
