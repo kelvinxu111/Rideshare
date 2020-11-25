@@ -43,7 +43,7 @@ public class User {
     @Column(name = "licenseNumber",nullable = false, unique = true)
     private String licenseNumber;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Vehicle> vehicles;
 
     @Column(name = "created",nullable = false)

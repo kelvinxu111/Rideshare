@@ -87,6 +87,7 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity createUser(@RequestBody User user) {
         try {
+            //TODO: need to define salt for hashed passwords
             user.setPassword(Hashing.sha256().hashString(user.getPassword(), StandardCharsets.UTF_8).toString());
             user.setCreated(LocalDateTime.now());
             User u = userRepository.save(user);
