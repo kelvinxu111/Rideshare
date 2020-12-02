@@ -23,9 +23,11 @@ public class User {
     private UUID userID;
 
     @Column(name = "userName",nullable = false, unique = true)
+
     private String userName;
 
     @Column(name = "displayName",nullable = false, unique = true)
+
     private String displayName;
 
     @Column(name = "phoneNumber",nullable = false)
@@ -57,14 +59,15 @@ public class User {
 
     @Column(name = "isActivated",nullable = false)
     private boolean isActivated;
-
+    @Column(name = "salt", nullable = false)
+    private String salt;
     @Lob
     @Column(name = "profilePicture")
     private byte[] profilePicture;
 
     public User() {}
 
-    public User(UUID userID, String username, String displayName, String phoneNumber, String email, String password, String role, String licenseNumber) {
+    public User(UUID userID, String username, String displayName, String phoneNumber, String email, String password, String role, String licenseNumber,String salt) {
         this.userID = userID;
         this.userName = username;
         this.displayName = displayName;
@@ -75,5 +78,6 @@ public class User {
         this.licenseNumber = licenseNumber;
         this.created = LocalDateTime.now();
         this.isActivated = false;
+        this.salt = salt;
     }
 }

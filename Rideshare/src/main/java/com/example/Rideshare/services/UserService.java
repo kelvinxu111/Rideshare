@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserService {
-    public Optional<User> findUserById(UUID id);
+    public User findUserById(UUID id);
     public User findUserByUserName(String username);
     public User findByUsername(String username);
     public User findByEmail(String email);
